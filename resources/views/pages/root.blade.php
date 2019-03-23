@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    haha
+  这里是首页
 @endsection

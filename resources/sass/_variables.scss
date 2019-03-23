@@ -18,3 +18,18 @@ $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+
+
+$primary:       #232b43 !default;
+$secondary:     #aac5d6 !default;
+$success:       #73bc75 !default;
+$info:          #5fc8b9 !default;
+$warning:       #e79a4c !default;
+$danger:        #d15758 !default;
+$light:         #f2f3f7 !default;
+$dark:          #0e1931 !default;
+
+$theme-colors: (
+  "light":      $light,
+  "dark":       $dark
+) !default;
