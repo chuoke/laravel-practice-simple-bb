@@ -15,10 +15,10 @@
 
       <ul class="navbar-nav navbar-right">
         <li class="nav-item">
-          <a href="#" class="nav-link">登陆</a>
+          <a href="{{ route('login') }}" class="nav-link">登陆</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">注册</a>
+          <a href="{{ route('register') }}" class="nav-link">注册</a>
         </li>
       </ul>
     </div>
