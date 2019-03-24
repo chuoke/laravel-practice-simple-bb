@@ -16424,6 +16424,16 @@ readers do not read off random characters that represent icons */
   font-family: "Font Awesome 5 Brands";
 }
 
+a,
+.no-decoration {
+  text-decoration: none;
+}
+
+a:hover,
+.no-decoration:hover {
+  text-decoration: none;
+}
+
 .app-navbar {
   border-top: 4px solid #05ce7c;
 }

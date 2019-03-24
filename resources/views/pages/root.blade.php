@@ -2,5 +2,5 @@
 
 @section('content')
   这里是首页
-    <span class="fa fas-home"></span>
+    <span class="fas fa-home"></span>
 @endsection
