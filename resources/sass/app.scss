@@ -15,7 +15,7 @@
 
 a, .no-decoration {
   text-decoration : none;
-  &:hover {
+  &:hover, &:focus, &:active, &:visited {
     text-decoration : none;
   }
 }

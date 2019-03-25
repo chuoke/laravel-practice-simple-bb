@@ -16430,7 +16430,13 @@ a,
 }
 
 a:hover,
-.no-decoration:hover {
+a:focus,
+a:active,
+a:visited,
+.no-decoration:hover,
+.no-decoration:focus,
+.no-decoration:active,
+.no-decoration:visited {
   text-decoration: none;
 }
 
