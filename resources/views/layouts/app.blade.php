@@ -10,13 +10,13 @@
 
   <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
-<body>
-  <div id="app" class="{{ route_class() }}-page d-flex flex-column h-100">
+<body class="d-flex flex-column h-100">
+  <div id="app" class="{{ route_class() }}-page">
     @include('layouts._header')
 
     @yield('pre-content')
 
-    <div class="container">
+    <div class="container mb-3">
 
       @include('shared._messages')
 

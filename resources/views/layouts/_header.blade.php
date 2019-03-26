@@ -24,7 +24,7 @@
         @else
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" id="app-navbar-user-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img src="https://iocaffcdn.phphub.org/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/60/h/60" width="36px" height="36px" alt="" class="img-responsive rounded-circle">
+              <img src="{{ Auth::user()->avatar() }}" width="36px" height="36px" alt="" class="img-responsive rounded-circle">
               {{ Auth()->user()->name }}
             </a>
             <div class="dropdown-menu" aria-labelledby="app-navbar-user-dropdown">
