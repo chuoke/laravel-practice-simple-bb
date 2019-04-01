@@ -9,7 +9,7 @@
         <img src="{{ $user->avatar() }}" width="100%" alt="{{ $user->name . '的头像' }}">
         <div class="card-body">
           <h5><strong>个人简介</strong></h5>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat cupiditate maxime molestiae tempora repudiandae a aliquam perferendis enim quibusdam porro commodi, corporis minus incidunt ad odio fuga ea odit cumque?</p>
+          <p>{{ $user->introduction }}</p>
           <hr>
           <h5><strong>注册于</strong></h5>
           <p>{{ $user->created_at }}</p>

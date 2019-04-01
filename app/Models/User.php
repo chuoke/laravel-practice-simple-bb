@@ -18,7 +18,7 @@ class User extends Authenticatable implements MustVerifyEmailContract
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'introduction',
     ];
 
     /**
@@ -41,6 +41,10 @@ class User extends Authenticatable implements MustVerifyEmailContract
 
     public function avatar()
     {
+        if ($this->avatar) {
+            return $this->avatar;
+        }
+
         return 'https://iocaffcdn.phphub.org/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/60/h/60';
     }
 }

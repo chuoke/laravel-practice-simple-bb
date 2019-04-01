@@ -28,8 +28,8 @@
               {{ Auth()->user()->name }}
             </a>
             <div class="dropdown-menu" aria-labelledby="app-navbar-user-dropdown">
-              <a href="#" class="dropdown-item"><span class="fas fa-home"></span> 个人中心</a>
-              <a href="#" class="dropdown-item"><span class="fas fa-cog"></span> 编辑资料</a>
+              <a href="{{ route('users.show', ['id' => Auth::id()]) }}" class="dropdown-item"><span class="fas fa-home"></span> 个人中心</a>
+              <a href="{{ route('users.edit', ['id' => Auth::id()]) }}" class="dropdown-item"><span class="fas fa-cog"></span> 编辑资料</a>
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item" id="logout">
                 <form action="{{ route('logout') }}" method="POST" class="mb-0">
