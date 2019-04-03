@@ -12,6 +12,15 @@ class User extends Authenticatable implements MustVerifyEmailContract
     use Notifiable
         ,MustVerifyEmailTrait;
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+            $user->introduction = '';
+        });
+    }
+
     /**
      * The attributes that are mass assignable.
      *
