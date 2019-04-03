@@ -2,11 +2,15 @@
 
 namespace App\Handlers;
 
+use Intervention\Image\Facades\Image;
+
+
+
 class ImageUploadHandler
 {
     protected $allowed_ext = ['png', 'jpg', 'gif', 'jpeg'];
 
-    public function save($file, $folder, $file_prefix = null)
+    public function save($file, $folder, $file_prefix = null, $max_width = false)
     {
         $extension = strtolower($file->getClientOriginalExtension());
         if (!in_array($extension, $this->allowed_ext, true)) {
@@ -20,6 +24,9 @@ class ImageUploadHandler
         $filename = $this->makeFileName($extension, $file_prefix);
 
         $file->move($upload_path, $filename);
+        if ($max_width && $extension != 'gif') {
+            $this->reduceSize($upload_path . '/' . $filename, $max_width);
+        }
 
         $path = "/$folder_name/$filename";
         return [
@@ -36,6 +43,21 @@ class ImageUploadHandler
     public function makeFileName($extension, $prefix = null)
     {
         return implode('_', array_diff([$prefix, time(), str_random(10)], ['', null])) . '.' . $extension;
+    }
+
+    public function reduceSize($file_path, $max_width)
+    {
+        $image = Image::make($file_path);
+
+        $image->resize($max_width, null, function ($constraint) {
+            // 设定宽度是 $max_width，高度等比例双方缩放
+            $constraint->aspectRatio();
+
+            // 防止裁图时图片尺寸变大
+            $constraint->upsize();
+        });
+
+        $image->save();
     }
 
     public function notAllowedExtension()
