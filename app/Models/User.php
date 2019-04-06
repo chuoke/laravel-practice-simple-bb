@@ -16,8 +16,8 @@ class User extends Authenticatable implements MustVerifyEmailContract
     {
         parent::boot();
 
-        static::creating(function ($user) {
-            $user->introduction = '';
+        static::saving(function ($user) {
+            $user->introduction || $user->introduction = '';
         });
     }
 
