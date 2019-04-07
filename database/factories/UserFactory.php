@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use App\Functions\Avatar;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -16,11 +17,16 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(User::class, function (Faker $faker) {
+    $email = $faker->unique()->safeEmail;
     return [
         'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
+        'email' => $email,
+        'avatar' => Avatar::make($email),
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        'introduction' => $faker->sentence(),
         'remember_token' => Str::random(10),
+        'created_at' => time(),
+        'updated_at' => time() + rand(0, 9999),
     ];
 });
