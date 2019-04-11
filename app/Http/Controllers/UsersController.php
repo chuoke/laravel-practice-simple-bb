@@ -52,9 +52,14 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Request $request, User $user)
     {
-        return view('users.show', compact('user'));
+        $topics = $user->topics()
+                    ->with('user', 'category')
+                    ->withOrder($request->order)
+                    ->paginate(10);
+
+        return view('users.show', compact('user', 'topics'));
     }
 
     /**
