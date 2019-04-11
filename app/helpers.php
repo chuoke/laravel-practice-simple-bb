@@ -11,3 +11,10 @@ function nav_active($category_id = null) {
 
     return active_class($is_active, ' active');
 }
+
+function make_excerpt($str, $length = 200)
+{
+    $excerpt = trim(preg_replace('/\r\n|\r|\n+/', ' ', strip_tags($str)));
+
+    return str_limit($excerpt, $length);
+}

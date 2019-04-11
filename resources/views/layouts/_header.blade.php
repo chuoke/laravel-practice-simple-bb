@@ -26,6 +26,11 @@
             <a href="{{ route('register') }}" class="nav-link">注册</a>
           </li>
         @else
+          <li class="nav-item d-flex align-items-center mr-3" title="新建话题">
+            <a href="{{ route('topics.create') }}" class="nav-link">
+              <i class="fas fa-plus"></i>
+            </a>
+          </li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" id="app-navbar-user-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src="{{ Auth::user()->avatar() }}" width="36px" height="36px" alt="" class="img-responsive rounded-circle">
