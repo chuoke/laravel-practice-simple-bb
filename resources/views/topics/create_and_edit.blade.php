@@ -4,6 +4,12 @@
  <link rel="stylesheet" href="{{ asset('css/simditor.css') }}">
  <style>
   .simditor .simditor-toolbar > ul > li > .toolbar-item {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  .simditor .simditor-body img {
+    max-width: calc(100% - 10px);
     height: auto;
   }
  </style>
@@ -72,7 +78,17 @@
   <script>
     $(document).ready(function () {
       var editor = new Simditor({
-        textarea: $('#editor')
+        textarea: $('#editor'),
+        upload: {
+          url: '{{ route('topics.upload_image') }}',
+          params: {
+            _token: '{{ csrf_token() }}'
+          },
+          fikeKey: 'upload_image',
+          connectionCount: 2,
+          leaveConfirm: '离开此页面，上传将终止！'
+        },
+        pasteImage: true
       });
     })
   </script>
