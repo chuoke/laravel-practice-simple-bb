@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('styles')
+ <link rel="stylesheet" href="{{ asset('css/simditor.css') }}">
+ <style>
+  .simditor .simditor-toolbar > ul > li > .toolbar-item {
+    height: auto;
+  }
+ </style>
+@endsection
 @section('content')
 
 <div class="container">
@@ -41,7 +49,7 @@
           </div>
 
           <div class="form-group">
-            <textarea name="body" id="body-field" placeholder="请填写内容" class="form-control" rows="5" required>{{ old('body', $topic->body ) }}</textarea>
+            <textarea name="body" id="editor" placeholder="请填写内容" class="form-control" rows="5" required>{{ old('body', $topic->body ) }}</textarea>
           </div>
 
           <div class="w-100 text-center">
@@ -53,4 +61,19 @@
   </div>
 </div>
 
+@endsection
+
+@section('scripts')
+  <script src="{{ asset('js/module.js') }}"></script>
+  <script src="{{ asset('js/hotkeys.js') }}"></script>
+  <script src="{{ asset('js/uploader.js') }}"></script>
+  <script src="{{ asset('js/simditor.js') }}"></script>
+
+  <script>
+    $(document).ready(function () {
+      var editor = new Simditor({
+        textarea: $('#editor')
+      });
+    })
+  </script>
 @endsection

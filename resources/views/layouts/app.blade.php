@@ -9,6 +9,9 @@
   <title>@yield('title', config('app.name')) - 哔，哔哔</title>
 
   <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+  @yield('styles')
+
 </head>
 <body class="d-flex flex-column h-100">
   <div id="app" class="{{ route_class() }}-page">
@@ -28,5 +31,8 @@
   </div>
 
   <script src="{{ mix('js/app.js') }}"></script>
+
+  @yield('scripts')
+
 </body>
 </html>
