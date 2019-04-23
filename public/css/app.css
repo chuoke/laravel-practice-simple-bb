@@ -16444,3 +16444,7 @@ a:visited,
   border-top: 4px solid #05ce7c;
 }
 
+img {
+  max-width: 100%;
+}
+

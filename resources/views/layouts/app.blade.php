@@ -7,6 +7,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>@yield('title', config('app.name')) - 哔，哔哔</title>
+  <meta name="description" content="@yield('description', '哔哔社区，没事多哔哔！')">
 
   <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
