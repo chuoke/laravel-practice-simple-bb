@@ -45,10 +45,15 @@
         </a>
         @endcan
         
-        @can('update', $topic)
-          <a href="" class="btn btn-outline-danger btn-sm ml-2">
-            <i class="far fa-trsh-alt"></i> 删除
-          </a>
+        @can('destroy', $topic)
+          <form class="d-inline" action="{{ route('topics.destroy', $topic->id) }}" method="post" onsubmit="return confirm('你确定要删除这篇话题吗？');">
+              @csrf
+              @method('DELETE')
+
+              <button type="submit" class="btn btn-outline-danger btn-sm ml-2">
+                <i class="far fa-trsh-alt"></i> 删除
+              </button>
+          </form>
         @endcan
       </div>
     </div>
