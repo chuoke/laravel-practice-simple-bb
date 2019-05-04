@@ -19,6 +19,6 @@ class SlugHandler
 
     public function pinyin($text)
     {
-        return app(Pinyin::class)->permalink($text);
+        return str_slug(app(Pinyin::class)->permalink($text));
     }
 }
