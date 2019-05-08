@@ -23,6 +23,11 @@ class Topic extends Model
         return $this->hasMany(Reply::class, 'topic_id', 'id');
     }
 
+    public function repliesWithUser()
+    {
+        return $this->replies()->with('user');
+    }
+
     public function scopeWithOrder($query, $order)
     {
         switch ($order) {

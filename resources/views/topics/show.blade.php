@@ -44,7 +44,7 @@
           <i class="far fa-edit"></i> 编辑
         </a>
         @endcan
-        
+
         @can('destroy', $topic)
           <form class="d-inline" action="{{ route('topics.destroy', $topic->id) }}" method="post" onsubmit="return confirm('你确定要删除这篇话题吗？');">
               @csrf
@@ -58,6 +58,12 @@
       </div>
     </div>
 
+  </div>
+  <div class="col-sm-12 mt-3">
+    @include('topics._reply_box', compact('topic'))
+  </div>
+  <div class="col-sm-12 mt-3">
+    @include('topics._reply_list', ['replies' => $topic->repliesWithUser])
   </div>
 </div>
 

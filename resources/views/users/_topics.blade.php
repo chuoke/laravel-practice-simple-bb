@@ -1,5 +1,5 @@
 @if (count($topics))
-  <ul class="list-group mt-4 border-0">
+  <ul class="list-group border-0">
     @foreach ($topics as $topic)
       <li class="list-group-item border-left-0 border-right-0{{ $loop->first ? ' border-top-0' : '' }}">
         <a href="{{ $topic->link() }}">{{ $topic->title }}</a>

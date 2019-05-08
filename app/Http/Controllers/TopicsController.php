@@ -28,7 +28,9 @@ class TopicsController extends Controller
         if (!empty($topic->slug) && empty($request->slug)) {
             return redirect($topic->link(), 301);
         }
-        
+
+        $topic->load('repliesWithUser');
+
         return view('topics.show', compact('topic'));
     }
 
@@ -49,7 +51,7 @@ class TopicsController extends Controller
     public function edit(Topic $topic)
     {
         $this->authorize('update', $topic);
-        
+
         $categories = Category::all();
 
         return view('topics.create_and_edit', compact('topic', 'categories'));

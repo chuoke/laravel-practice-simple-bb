@@ -54,12 +54,7 @@ class UsersController extends Controller
      */
     public function show(Request $request, User $user)
     {
-        $topics = $user->topics()
-                    ->with('user', 'category')
-                    ->withOrder($request->order)
-                    ->paginate(10);
-
-        return view('users.show', compact('user', 'topics'));
+        return view('users.show', compact('user'));
     }
 
     /**
