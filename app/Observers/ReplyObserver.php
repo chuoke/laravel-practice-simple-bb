@@ -16,18 +16,11 @@ class ReplyObserver
 
     public function created(Reply $reply)
     {
-        $this->updateTopicReplyCount($reply->topic);
+        $reply->topic->refreshReplyCount();
     }
 
     public function deleted(Reply $reply)
     {
-        $this->updateTopicReplyCount($reply->topic);
-    }
-
-    public function updateTopicReplyCount($topic)
-    {
-        $topic->reply_count = $topic->replies()->count();
-
-        $topic->save();
+        $reply->topic->refreshReplyCount();
     }
 }
