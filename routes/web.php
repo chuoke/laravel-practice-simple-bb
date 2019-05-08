@@ -37,12 +37,13 @@ Route::get('email/resend', 'Auth\VerificationController@resend')->name('verifica
 // User
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
 
-
+// Topic
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show');
+Route::post('topics/{topic}/replies', 'RepliesController@store')->name('topics.replies');
+Route::delete('topics/{topic}/replies/{reply}', 'RepliesController@destroy')->name('topics.replies.destroy');
 
 Route::post('topics/upload-image', 'TopicsController@uploadImage')->name('topics.upload_image');
 
+// Category
 Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
-
-Route::resource('replies', 'RepliesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);

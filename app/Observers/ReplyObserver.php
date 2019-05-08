@@ -11,11 +11,23 @@ class ReplyObserver
 {
     public function creating(Reply $reply)
     {
-        //
+        $reply->content = clean($reply->content, 'user_topic_body');
     }
 
-    public function updating(Reply $reply)
+    public function created(Reply $reply)
     {
-        //
+        $this->updateTopicReplyCount($reply->topic);
+    }
+
+    public function deleted(Reply $reply)
+    {
+        $this->updateTopicReplyCount($reply->topic);
+    }
+
+    public function updateTopicReplyCount($topic)
+    {
+        $topic->reply_count = $topic->replies()->count();
+
+        $topic->save();
     }
 }

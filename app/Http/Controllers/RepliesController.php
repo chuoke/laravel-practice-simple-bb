@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reply;
+use App\Models\Topic;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\ReplyRequest;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class RepliesController extends Controller
 {
@@ -30,10 +32,13 @@ class RepliesController extends Controller
         return view('replies.create_and_edit', compact('reply'));
     }
 
-    public function store(ReplyRequest $request)
+    public function store(ReplyRequest $request, Topic $topic)
     {
-        $reply = Reply::create($request->all());
-        return redirect()->route('replies.show', $reply->id)->with('message', 'Created successfully.');
+        $request->offsetSet('topic_id', $topic->id);
+
+        $reply = Auth::user()->replies()->create($request->all());
+
+        return redirect()->route('topics.show', $topic->id)->with('success', '评论成功！');
     }
 
     public function edit(Reply $reply)
@@ -50,11 +55,11 @@ class RepliesController extends Controller
         return redirect()->route('replies.show', $reply->id)->with('message', 'Updated successfully.');
     }
 
-    public function destroy(Reply $reply)
+    public function destroy(Topic $topic, Reply $reply)
     {
         $this->authorize('destroy', $reply);
         $reply->delete();
 
-        return redirect()->route('replies.index')->with('message', 'Deleted successfully.');
+        return back()->with('success', '删除成功！');
     }
 }

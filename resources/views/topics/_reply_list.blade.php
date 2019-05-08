@@ -13,12 +13,17 @@
             <span class="ml-2 small text-muted">{{ $reply->created_at->diffForHumans() }}</span>
           </div>
           <div>
-            <a class="text-muted small float-right" for="#delete-reply-form"><i class="far fa-trash-alt"></i></a>
-            <form class="d-none" action="" method="POST" id="delete-reply-form">
-              @csrf
-              @method('DELETE')
-              <input type="hidden" name="reply_id" value="{{ $reply->id }}">
-            </form>
+            @can('destroy', $reply)
+              <a class="text-muted small float-right" href="{{ route('topics.replies.destroy', ['topic' => $topic->id, 'reply' => $reply->id]) }}"
+                onclick="if (confirm('确定要删除评论！')) document.getElementById('delete-reply-form-{{ $reply->id }}').submit(); return false;"
+              >
+                <i class="far fa-trash-alt"></i>
+              </a>
+              <form class="d-none" action="{{ route('topics.replies.destroy', ['topic' => $topic->id, 'reply' => $reply->id]) }}" method="POST" id="delete-reply-form-{{ $reply->id }}">
+                @csrf
+                @method('DELETE')
+              </form>
+            @endcan
           </div>
         </div>
 
