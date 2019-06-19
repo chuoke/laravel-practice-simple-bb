@@ -43,6 +43,9 @@ Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show
 Route::post('topics/{topic}/replies', 'RepliesController@store')->name('topics.replies');
 Route::delete('topics/{topic}/replies/{reply}', 'RepliesController@destroy')->name('topics.replies.destroy');
 
+// 通知
+Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
+
 Route::post('topics/upload-image', 'TopicsController@uploadImage')->name('topics.upload_image');
 
 // Category

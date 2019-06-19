@@ -31,6 +31,13 @@
               <i class="fas fa-plus"></i>
             </a>
           </li>
+          <li class="nav-item mr-3 d-flex align-items-center">
+            <a class="nav-link text-white" href="{{ route('notifications.index') }}">
+              <span class="badge badge-pill badge-{{ Auth::user()->notification_count > 0 ? 'danger' : 'secondary' }}">
+                {{ Auth::user()->notification_count }}
+              </span>
+            </a>
+          </li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" id="app-navbar-user-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src="{{ Auth::user()->avatar() }}" width="36px" height="36px" alt="" class="img-responsive rounded-circle">
