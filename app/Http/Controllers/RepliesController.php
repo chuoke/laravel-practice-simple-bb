@@ -38,7 +38,7 @@ class RepliesController extends Controller
 
         $reply = Auth::user()->replies()->create($request->all());
 
-        return redirect()->route('topics.show', $topic->id)->with('success', '评论成功！');
+        return redirect()->to($topic->link())->with('success', '评论成功！');
     }
 
     public function edit(Reply $reply)
